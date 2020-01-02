@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/script/GameUI.gd" type="Script" id=1]
+[ext_resource path="res://ui/scene/PlayerLife.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/font/bahnschrift.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 3 )
+
+[node name="GameUI" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 0.125
+margin_right = 2.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+script = ExtResource( 1 )
+PlayerLife = ExtResource( 2 )
+
+[node name="HSplitContainer" type="HBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 632.0
+margin_bottom = 35.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="Score" type="Label" parent="HSplitContainer"]
+margin_right = 622.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Score : 0"
+uppercase = true
+
+[node name="CenterContainer" type="CenterContainer" parent="HSplitContainer"]
+margin_left = 622.0
+margin_right = 622.0
+margin_bottom = 25.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/CenterContainer"]
+margin_top = 12.0
+margin_bottom = 12.0

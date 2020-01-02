@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://environment/scene/Environment.tscn" type="PackedScene" id=1]
+[ext_resource path="res://environment/script/GalaxyBlack.gd" type="Script" id=2]
+[ext_resource path="res://enemy/scene/boss/GalaxyBlackBoss.tscn" type="PackedScene" id=3]
+[ext_resource path="res://environment/sprite/step_2.jpg" type="Texture" id=4]
+
+[node name="GalaxyBlack" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+Boss = ExtResource( 3 )
+
+[node name="Decor" parent="." index="1"]
+_texture = ExtResource( 4 )
+[connection signal="load_next_step" from="Player" to="." method="_on_Player_load_next_step"]

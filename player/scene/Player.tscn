@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://player/script/Player.gd" type="Script" id=1]
+[ext_resource path="res://bullet/scene/NormalBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fire_effect/scene/Explosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://player/sprite/player.png" type="Texture" id=4]
+[ext_resource path="res://fire_effect/scene/TurboReactor.tscn" type="PackedScene" id=5]
+
+[node name="Player" type="Area2D"]
+rotation = 1.5708
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+BulletScene = ExtResource( 2 )
+Explosion_Scene = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -19.0077, 27.8724, -25.9046, 2.90059, -18.7698, -5.66117, -14.9646, -5.42335, -10.3973, 0.0556793, -6.87849, -16.3634, -1.17065, -26.5899, 2.87241, -26.5899, 7.86678, -17.5525, 10.4829, -0.428982, 12.9043, -5.32161, 22.5834, -6.39707, 26.8929, 3.13842, 20.4716, 27.8724 )
+
+[node name="TurboReactors" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="TurboReactor" parent="TurboReactors" instance=ExtResource( 5 )]
+position = Vector2( -16.022, 35.0482 )
+rotation = -1.5708
+scale = Vector2( 0.15, 0.15 )
+frame = 12
+
+[node name="TurboReactor2" parent="TurboReactors" instance=ExtResource( 5 )]
+position = Vector2( 19.7772, 35.2985 )
+rotation = -1.5708
+scale = Vector2( 0.15, 0.15 )
+frame = 12
+
+[node name="TurboReactor3" parent="TurboReactors" instance=ExtResource( 5 )]
+position = Vector2( -4.0381, 32.9505 )
+rotation = -1.5708
+scale = Vector2( 0.0954037, 0.094368 )
+frame = 12
+
+[node name="TurboReactor4" parent="TurboReactors" instance=ExtResource( 5 )]
+position = Vector2( 6.36221, 32.6974 )
+rotation = -1.5708
+scale = Vector2( 0.0954037, 0.094368 )
+frame = 11
+
+[node name="BulletPosition" type="Position2D" parent="."]
+position = Vector2( 0.500686, -24.033 )
+
+[node name="PlayerEffect" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
+[connection signal="timeout" from="PlayerEffect" to="." method="_on_PlayerEffect_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

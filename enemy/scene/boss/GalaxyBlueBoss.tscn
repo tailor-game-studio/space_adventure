@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemy/scene/boss/Boss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://bullet/scene/NormalBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://enemy/sprite/boss_1.png" type="Texture" id=3]
+[ext_resource path="res://fire_effect/scene/TurboReactor.tscn" type="PackedScene" id=4]
+
+[node name="GalaxyBlueBoss" index="0" instance=ExtResource( 1 )]
+scale = Vector2( 0.6, 0.6 )
+BulletScene = ExtResource( 2 )
+_animation_end_time = 0.75
+_life = 30
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( 99.0258, 44.5869, 100.286, 67.2759, 64.9923, 66.0154, 57.4293, 77.3599, 44.8243, 74.8389, 13.3118, 92.4859, -13.1588, 92.4859, -40.8897, 76.0994, -56.0158, 76.0994, -62.3183, 64.7549, -92.5703, 66.0154, -92.5703, 44.5868, -61.0578, 16.8559, -42.1503, 1.72986, -28.2848, -13.3962, -28.2848, -41.1272, -6.85623, -92.8077, 7.44757, -89.5944, 27.8324, -40.4854, 29.6856, -8.05499, 42.6577, 3.06403, 59.3363, 11.4033, 61.1894, 26.2286 )
+
+[node name="TurboReactors" type="Node2D" parent="." index="2"]
+editor/display_folded = true
+
+[node name="TurboReactor" parent="TurboReactors" index="0" instance=ExtResource( 4 )]
+position = Vector2( 10.6401, 103.883 )
+rotation = -1.5708
+scale = Vector2( 0.277218, 0.199209 )
+frame = 26
+
+[node name="TurboReactor2" parent="TurboReactors" index="1" instance=ExtResource( 4 )]
+position = Vector2( -5.82632, 104.823 )
+rotation = -1.5708
+scale = Vector2( 0.294741, 0.205519 )
+frame = 25
+
+[node name="BulletPosition" parent="." index="6"]
+position = Vector2( 0.6147, -90.1585 )

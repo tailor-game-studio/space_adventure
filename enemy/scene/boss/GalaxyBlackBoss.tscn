@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemy/scene/boss/Boss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemy/script/GalaxyBlackBoss.gd" type="Script" id=2]
+[ext_resource path="res://bullet/scene/NormalBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://enemy/sprite/boss_2.png" type="Texture" id=4]
+
+[node name="GalaxyBlackBoss" index="0" instance=ExtResource( 1 )]
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 2 )
+BulletScene = ExtResource( 3 )
+_animation_end_time = 0.5
+_life = 25
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( 3.61159, -191.677, 9.77168, -183.463, 17.985, -138.289, 19.0115, -97.2217, 42.6251, -41.7806, 35.4383, -31.5138, 59.0518, 47.5411, 75.4787, 56.7813, 86.7723, 41.3811, 89.8522, 74.2351, 141.578, 124.002, 194.21, 67.1599, 198.42, 191.371, 175.262, 170.318, 139.473, 199.792, 97.3676, 164.002, 53.1569, 199.791, -56.0011, 196.001, -100.001, 162.001, -126.949, 198.106, -166.479, 181.3, -192.601, 192.7, -200.001, 62.0005, -162.001, 112.001, -86.0009, 72.0009, -90.0008, 40.0009, -72.0008, 56.001, -44.0004, -25.9991, -30.0002, -93.9991, -22, -137.999, -15.9999, -177.999 )
+
+[node name="BulletLoader" parent="." index="3"]
+wait_time = 0.25
+
+[node name="BulletPosition" parent="." index="5"]
+position = Vector2( -0.206848, -204.418 )

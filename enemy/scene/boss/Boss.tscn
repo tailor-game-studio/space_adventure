@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://enemy/script/Boss.gd" type="Script" id=1]
+
+[node name="Boss" type="Area2D"]
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+disabled = true
+
+[node name="MoveAnimation" type="AnimationPlayer" parent="."]
+
+[node name="BulletLoader" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="BulletTouchEffect" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="BulletPosition" type="Position2D" parent="."]
+[connection signal="area_entered" from="." to="." method="_on_Boss_area_entered"]
+[connection signal="animation_finished" from="MoveAnimation" to="." method="_on_MoveAnimation_animation_finished"]
+[connection signal="timeout" from="BulletLoader" to="." method="_on_BulletLoader_timeout"]
+[connection signal="timeout" from="BulletTouchEffect" to="." method="_on_BulletTouchEffect_timeout"]
